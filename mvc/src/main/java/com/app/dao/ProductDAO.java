@@ -29,6 +29,12 @@ public class ProductDAO {
 	public Optional<ProductVO> select(Long id) {
 		return Optional.ofNullable(sqlSession.selectOne("product.select", id));
 	}
+	
+//	최신 상품 아이디 조회
+	public Long selectId() {
+		return sqlSession.selectOne("product.selectId");
+	}
+	
 //	상품 수정
 	public void update(ProductVO productVO) {
 		sqlSession.update("product.update", productVO);
@@ -38,6 +44,8 @@ public class ProductDAO {
 	public void delete(Long id) {
 		sqlSession.delete("product.delete", id);
 	}
+	
+	
 	
 	
 }
