@@ -10,23 +10,20 @@ import com.app.Action;
 import com.app.Result;
 import com.app.dao.ProductDAO;
 
-public class ProductReadController implements Action {
+public class ProductDeleteOkController implements Action {
 
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		Result result = new Result();
 		ProductDAO productDAO = new ProductDAO();
+		
 		Long id = Long.parseLong(req.getParameter("id"));
-		System.out.println(id);
 		
-		req.setAttribute("product", productDAO.select(id).orElseThrow(() -> {
-			throw new RuntimeException("ProductReadController user not found");
-		}));
+		productDAO.delete(id);
 		
+		result.setRedirect(true);
+		result.setPath("list.product");
 		
-		
-		
-		result.setPath("read.jsp");
 		return result;
 	}
 

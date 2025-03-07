@@ -13,24 +13,24 @@ import com.app.vo.ProductVO;
 
 public class ProductWriteOkController implements Action {
 
-	@Override
-	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		
-		Result result = new Result();
-		ProductDAO productDAO = new ProductDAO();
-		ProductVO productVO = new ProductVO();
-		
-		productVO.setProductName(req.getParameter("productName"));
-		productVO.setProductPrice(Integer.parseInt(req.getParameter("productPrice")));
-		productVO.setProductStock(Integer.parseInt(req.getParameter("productStock")));
-		
-		productDAO.insert(productVO);
-		Long insertedId = productDAO.selectId();
-		
-//		리다이렉트 후 포워드
-		result.setRedirect(true);
-		result.setPath(req.getContextPath() + "/read.product");
-		return result;
-	}
+   @Override
+   public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+      
+      Result result = new Result();
+      ProductDAO productDAO = new ProductDAO();
+      ProductVO productVO = new ProductVO();
+      
+      productVO.setProductName(req.getParameter("productName"));
+      productVO.setProductPrice(Integer.parseInt(req.getParameter("productPrice")));
+      productVO.setProductStock(Integer.parseInt(req.getParameter("productStock")));
+      
+      productDAO.insert(productVO);
+      Long insertedId = productDAO.selectId();
+      
+      result.setRedirect(true);
+      result.setPath(req.getContextPath() + "/read.product?id=" + insertedId);
+      return result;
+   }
 
 }
+

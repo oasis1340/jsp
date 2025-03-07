@@ -1,4 +1,4 @@
-package com.app.product;
+package com.app.post;
 
 import java.io.IOException;
 
@@ -8,18 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.app.Result;
-import com.app.product.controller.ProductDeleteOkController;
-import com.app.product.controller.ProductListController;
-import com.app.product.controller.ProductReadController;
-import com.app.product.controller.ProductUpdateController;
-import com.app.product.controller.ProductUpdateOkController;
-import com.app.product.controller.ProductWriteController;
-import com.app.product.controller.ProductWriteOkController;
+import com.app.post.controller.PostDeleteOkController;
+import com.app.post.controller.PostListController;
+import com.app.post.controller.PostReadController;
+import com.app.post.controller.PostUpdateController;
+import com.app.post.controller.PostUpdateOkController;
+import com.app.post.controller.PostWriteController;
+import com.app.post.controller.PostWriteOkController;
 
-public class ProductFrontController extends HttpServlet{
-//	https://localhost:9000/mvc/
-	
-	
+public class PostFrontController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
@@ -30,19 +27,19 @@ public class ProductFrontController extends HttpServlet{
 		
 		
 		if(target.equals("write")) {
-			result = new ProductWriteController().execute(req, resp);
+			result = new PostWriteController().execute(req, resp);
 		}else if(target.equals("write-ok")) {
-			result = new ProductWriteOkController().execute(req, resp);
+			result = new PostWriteOkController().execute(req, resp);
 		}else if(target.equals("list")) {
-			result = new ProductListController().execute(req, resp);
+			result = new PostListController().execute(req, resp);
 		}else if(target.equals("read")) {
-			result = new ProductReadController().execute(req, resp);
+			result = new PostReadController().execute(req, resp);
 		}else if(target.equals("update")) {
-			result = new ProductUpdateController().execute(req, resp);
+			result = new PostUpdateController().execute(req, resp);
 		}else if(target.equals("update-ok")) {
-			result = new ProductUpdateOkController().execute(req, resp);
+			result = new PostUpdateOkController().execute(req, resp);
 		}else if(target.equals("delete-ok")) {
-			result = new ProductDeleteOkController().execute(req, resp);
+			result = new PostDeleteOkController().execute(req, resp);
 		}else {
 //			전부 404
 		}
