@@ -15,7 +15,7 @@ public class PostWriteController implements Action{
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		Result result = new Result();
 		result.setPath("write.jsp");
-	
+		
 		return result;
 	}
 }
