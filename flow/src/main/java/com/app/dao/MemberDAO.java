@@ -26,7 +26,7 @@ public class MemberDAO {
 	
 //  멤버 조회
 	public Optional<MemberVO> selectByEmail(String memberEmail) {
-		return sqlSession.selectOne("member.selectByEmail", memberEmail);
+		return Optional.ofNullable(sqlSession.selectOne("member.selectByEmail", memberEmail));
 	}
 	
 }

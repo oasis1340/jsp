@@ -12,6 +12,7 @@ import com.app.member.controller.MemberJoinController;
 import com.app.member.controller.MemberJoinOkController;
 import com.app.member.controller.MemberLoginController;
 import com.app.member.controller.MemberLoginOkController;
+import com.app.member.controller.MemberLogoutOkController;
 
 public class MemberFrontController extends HttpServlet{
 //	https://localhost:9000/mvc/
@@ -33,6 +34,8 @@ public class MemberFrontController extends HttpServlet{
 			result = new MemberLoginController().execute(req, resp);
 		}else if(target.equals("login-ok")) {
 			result = new MemberLoginOkController().execute(req, resp);
+		}else if(target.equals("logout-ok")) {
+			result = new MemberLogoutOkController().execute(req, resp);
 		}else {
 //			전부 404
 		}
